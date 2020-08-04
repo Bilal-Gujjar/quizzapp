@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 //import Services
 import { getQuizDtails } from './Services/quizz_services';
-import { QuestionType } from './Types/quiztype';
+import { QuestionType, QuizType } from './Types/quiztype';
 import QuestionCard from './components/QuestionCard'
 
 function App() {
 
   let [quiz, setQuiz] = useState<QuestionType[]>([])
   let [currentStep, setcurrentStep] = useState(0)
+  let [score, setscore] = useState(0)
+
   useEffect(() => {
     async function fetchData() {
-      const questions: QuestionType[] = await getQuizDtails(5, 'easy');
-      console.log(questions);
+      const questions : QuizType[] = await getQuizDtails(5, 'easy');
+      //console.log(questions);
       setQuiz(questions)
 
     }
@@ -21,14 +23,20 @@ function App() {
   }, [])
   const handleSubmit = (e: React.FormEvent<EventTarget>, userAns: string) => {
 
-    console.log(userAns);
-    
     e.preventDefault();
+  const currentQuestion : QuizType = quiz [currentStep];
+  console.log("correct And : "+ currentQuestion.correct_answer+ "--user Selection" + userAns);
+  
+  if (userAns === currentQuestion.correct_answer) {
+ setscore(++score);
+    }
     if (currentStep !== quiz.length - 1)
 
       setcurrentStep(++currentStep);
     else {
-      alert("Quiz Completed")
+      alert    ("Your final score is" + score + "out of : "  + quiz.length)
+      setcurrentStep(0);
+      setscore(0);
     }
 
 

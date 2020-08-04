@@ -24,6 +24,7 @@ const handleSelection = ( ev : any) => {
                                         name="opt"
                                         required
                                         value={opition}
+                                        //checked = {selectedAns === opt}
                                         onChange = {handleSelection}
                                     />
                                     {opt}
