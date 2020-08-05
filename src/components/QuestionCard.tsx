@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { questionPropsType } from './../Types/quiztype'
 
-const QuestionCard: React.FC<questionPropsType> = ({ question, opition ,callback }) => {
+const QuestionCard: React.FC<questionPropsType> = ({ question, options ,callback }) => {
     //console.log(question,opition);
 let [ selectedAns, setSelectionAns] =  useState("");
 const handleSelection = ( ev : any) => {
@@ -15,7 +15,7 @@ const handleSelection = ( ev : any) => {
             </div>
             <form onSubmit = {(e:React.FormEvent<EventTarget>) =>callback(e,selectedAns)}>
                 {
-                    opition.map((opt: string, ind: number) => {
+                    options.map((opt: string, ind: number) => {
                         return (
                             <div key={ind}>
                                 <label>
@@ -23,8 +23,8 @@ const handleSelection = ( ev : any) => {
                                         type="radio"
                                         name="opt"
                                         required
-                                        value={opition}
-                                        //checked = {selectedAns === opt}
+                                        value={opt}
+                                        checked = {selectedAns === opt}
                                         onChange = {handleSelection}
                                     />
                                     {opt}
