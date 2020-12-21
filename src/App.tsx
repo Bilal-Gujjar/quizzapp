@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 //import Services
-import { getQuizDtails } from './Services/quizz_services';
+import { getQuizDetails } from './Services/quizz_services';
 import {  QuizType } from './Types/quiztype';
 import QuestionCard from './components/QuestionCard'
 
@@ -15,7 +15,7 @@ function App() {
   
   useEffect(() => {
     async function fetchData() {
-      const questions : QuizType[] = await getQuizDtails(5, 'easy');
+      const questions: QuizType[] = await getQuizDetails(5, 'easy');
       setQuiz(questions)
 
     }
@@ -25,8 +25,8 @@ function App() {
   const handleSubmit = (e: React.FormEvent<EventTarget>, userAns: string) => {
 
     e.preventDefault();
-  const currentQuestion : QuizType = quiz [currentStep];
-  console.log("correct And : "+ currentQuestion.correct_answer+ "--user Selection" + userAns);
+  const currentQuestion : QuizType = quiz [ currentStep ] ;
+  console.log("correct And :  "+ currentQuestion.correct_answer+  "--user Selection  " +  userAns);
   
   if (userAns === currentQuestion.correct_answer) {
   setscore(++score);
@@ -60,7 +60,7 @@ function App() {
     return (
     <div>
       <QuestionCard
-        opition={quiz[currentStep].opition}
+        options={quiz[currentStep].option}
         question={quiz[currentStep].question}
         callback={handleSubmit}
       />

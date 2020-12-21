@@ -5,7 +5,7 @@ const QuestionCard: React.FC<questionPropsType> = ({ question, options ,callback
     //console.log(question,opition);
 let [ selectedAns, setSelectionAns] =  useState("");
 const handleSelection = ( ev : any) => {
-    console.log(ev.target.value);
+   // console.log(ev.target.value);
         setSelectionAns(ev.target.value);
 }
     return (
