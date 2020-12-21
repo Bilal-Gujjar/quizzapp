@@ -26,7 +26,7 @@ function App() {
 
     e.preventDefault();
   const currentQuestion : QuizType = quiz [ currentStep ] ;
-  ///console.log("correct And :  "+ currentQuestion.correct_answer+  "--user Selection  " +  userAns);
+  console.log("correct And :  "+ currentQuestion.correct_answer+  "--user Selection  " +  userAns);
   
   if (userAns === currentQuestion.correct_answer) {
   setscore(++score);
