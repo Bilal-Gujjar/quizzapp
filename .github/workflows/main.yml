@@ -1,7 +1,7 @@
 
 # This is a basic workflow to help you get started with Actions
 
-name: Quizz App
+name: Quizz-App
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -35,4 +35,4 @@ jobs:
     - name: Install Surge
       run: npm install -g surge
     - name: Deploy to Surge 
-      run: surge ./build quizz_app_project_2021.surge.sh --token ${{secrets.SURGE_TOKEN_REACT}}
+      run: surge ./build quizz_app_project_2021.surge.sh --token ${{secrets.SURGE_TOKEN_REACT}}  
